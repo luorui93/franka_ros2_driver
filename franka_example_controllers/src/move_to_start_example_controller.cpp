@@ -92,7 +92,7 @@ CallbackReturn MoveToStartExampleController::on_configure(
     return CallbackReturn::FAILURE;
   }
   if (k_gains.size() != static_cast<uint>(num_joints)) {
-    RCLCPP_FATAL(get_node()->get_logger(), "k_gains should be of size %d but is of size %ld",
+    RCLCPP_FATAL(get_node()->get_logger(), "k_gains should be of size %updated but is of size %ld",
                  num_joints, k_gains.size());
     return CallbackReturn::FAILURE;
   }

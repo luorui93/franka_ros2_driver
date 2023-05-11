@@ -58,7 +58,7 @@ void Robot::initializeTorqueControl() {
   stopped_ = false;
   const auto kTorqueControl = [this]() {
     robot_->control(
-        [this](const franka::RobotState& state, const franka::Duration& /*period*/) {
+        [this](const franka::RobotState& state, const franka::Duration& /*period*/) -> franka::Torques {
           {
             std::lock_guard<std::mutex> lock(read_mutex_);
             current_state_ = state;
