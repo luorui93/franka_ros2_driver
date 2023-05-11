@@ -21,6 +21,7 @@ find_package(rclcpp_lifecycle REQUIRED)
 find_package(hardware_interface REQUIRED)
 find_package(franka_msgs REQUIRED)
 find_package(Eigen3 REQUIRED)
+find_package(forward_command_controller REQUIRED)
 
 add_library(
         ${PROJECT_NAME}
@@ -28,7 +29,9 @@ add_library(
         src/gravity_compensation_example_controller.cpp
         src/joint_impedance_example_controller.cpp
         src/move_to_start_example_controller.cpp
-        src/motion_generator.cpp)
+        src/motion_generator.cpp
+        src/joint_group_effort_controller.cpp)
+
 target_include_directories(
         ${PROJECT_NAME}
         PUBLIC
@@ -42,6 +45,7 @@ ament_target_dependencies(
         pluginlib
         rclcpp
         rclcpp_lifecycle
+        forward_command_controller
 )
 
 pluginlib_export_plugin_description_file(
@@ -96,5 +100,6 @@ ament_export_dependencies(
         rclcpp
         rclcpp_lifecycle
         hardware_interface
+        forward_command_controller
 )
 ament_package()

@@ -35,12 +35,12 @@ using CommandInterface = hardware_interface::CommandInterface;
 std::vector<StateInterface> FrankaHardwareInterface::export_state_interfaces() {
   std::vector<StateInterface> state_interfaces;
   for (auto i = 0U; i < info_.joints.size(); i++) {
-    state_interfaces.emplace_back(StateInterface(
-        info_.joints[i].name, hardware_interface::HW_IF_POSITION, &hw_positions_.at(i)));
-    state_interfaces.emplace_back(StateInterface(
-        info_.joints[i].name, hardware_interface::HW_IF_VELOCITY, &hw_velocities_.at(i)));
     state_interfaces.emplace_back(
-        StateInterface(info_.joints[i].name, hardware_interface::HW_IF_EFFORT, &hw_efforts_.at(i)));
+        info_.joints[i].name, hardware_interface::HW_IF_POSITION, &hw_positions_.at(i));
+    state_interfaces.emplace_back(
+        info_.joints[i].name, hardware_interface::HW_IF_VELOCITY, &hw_velocities_.at(i));
+    state_interfaces.emplace_back(
+        info_.joints[i].name, hardware_interface::HW_IF_EFFORT, &hw_efforts_.at(i));
   }
   return state_interfaces;
 }
